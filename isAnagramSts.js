@@ -1,3 +1,4 @@
+// 10.897s runtime
 // const isAnagram = (s, t) => {
 //   return s.length !== t.length
 //     ? false
@@ -10,6 +11,8 @@
 //           .sort()
 //           .join('');
 // };
+
+// 3.46s run time
 const isAnagram = (s, t) => {
   if (t.length !== s.length) return false;
   const counts = {};
