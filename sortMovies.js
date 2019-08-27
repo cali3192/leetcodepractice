@@ -38,6 +38,16 @@ const sortByNewest = (movieArr) => {
     return parseFloat(b.releaseYear) - parseFloat(a.releaseYear);
   });
 
+  // 5.974ms
+  // const result = [];
+
+  // sorted.forEach((movie) => {
+  //   result.push(movie.title);
+  // });
+
+  // return result;
+
+  // 6.090ms
   return sorted.map((movie) => {
     return movie.title;
   });
