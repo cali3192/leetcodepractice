@@ -27,5 +27,7 @@ const isAnagram = (s, t) => {
   return true;
 };
 
+console.time();
 const test = isAnagram('anagram', 'nagaram');
 console.log('test', test);
+console.timeEnd();
