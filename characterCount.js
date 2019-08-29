@@ -1,9 +1,9 @@
 const charCount = (str) => {
-  const obj = {};
+  // const obj = {};
 
-  for (const letter of str) {
-    obj[letter] = (obj[letter] || 0) + 1;
-  }
+  // for (const letter of str) {
+  //   obj[letter] = (obj[letter] || 0) + 1;
+  // }
   // const keys = Object.keys(obj);
   // const values = Object.values(obj);
 
@@ -17,9 +17,9 @@ const charCount = (str) => {
   // return result;
 
   // 6.543ms
-  return Object.keys(obj).map((letter) => {
-    return [letter, obj[letter]];
-  });
+  // return Object.keys(obj).map((letter) => {
+  //   return [letter, obj[letter]];
+  // });
 
   // 6.123ms
   // Object.keys(obj).forEach((letter) => {
@@ -27,6 +27,24 @@ const charCount = (str) => {
   // });
 
   // return result;
+
+  // map
+  const mapVal = new Map();
+  str.split('').forEach((letter) => {
+    if (!mapVal.has(letter)) {
+      mapVal.set(letter, { val: 1 });
+    }
+    mapVal.get(letter).val++;
+  });
+  // return mapVal;
+  // for (const [key, value] of mapVal) {
+  //   console.log('`${key} : ${value}`', `${key} : ${value}`);
+  // }
+  // const entries = [...mapVal.entries()];
+  return [...mapVal].map(([key, value]) => {
+    // return [entry[0], entry[1].val];
+    return [key, value.val];
+  });
 };
 
 // charCount('mississippi') => [['m', 1], ['i', 4], ['s', 4], ['p', 2]]
