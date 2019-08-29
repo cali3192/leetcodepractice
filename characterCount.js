@@ -37,12 +37,7 @@ const charCount = (str) => {
     mapVal.get(letter).val++;
   });
   // return mapVal;
-  // for (const [key, value] of mapVal) {
-  //   console.log('`${key} : ${value}`', `${key} : ${value}`);
-  // }
-  // const entries = [...mapVal.entries()];
   return [...mapVal].map(([key, value]) => {
-    // return [entry[0], entry[1].val];
     return [key, value.val];
   });
 };
