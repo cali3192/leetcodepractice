@@ -1,5 +1,4 @@
-const anagramArr = (arr) => {
-  // code foes here
+const makeUniqueObj = (arr) => {
   const sorted = arr.map((word) => {
     return word
       .split('')
@@ -10,23 +9,31 @@ const anagramArr = (arr) => {
   const unique = new Set(sorted);
 
   const obj = {};
+
   unique.forEach((elem) => {
-    return (obj[elem] = []);
+    obj[elem] = [];
   });
+  return obj;
+};
+
+const anagramArr = (arr) => {
+  // code foes here
+
+  const uniqueObj = makeUniqueObj(arr);
 
   arr.forEach((word) => {
-    for (const key in obj) {
+    for (const key in uniqueObj) {
       if (
         word
           .split('')
           .sort()
           .join('') === key
       ) {
-        obj[key].push(word);
+        uniqueObj[key].push(word);
       }
     }
   });
-  return Object.values(obj);
+  return Object.values(uniqueObj);
 };
 
 const input = ['cat', 'act', 'tac', 'racecar', 'carecar', 'eat', 'tea'];
@@ -36,7 +43,10 @@ const expected = [
   ['racecar', 'carecar'],
   ['eat', 'tea']
 ];
-// console.log('actual', actual);
+
+console.time();
+console.log('actual', actual);
+console.timeEnd();
 
 const assertEqual = (result, expected, testName) => {
   if (typeof result === 'object' || typeof expected === 'object') {
