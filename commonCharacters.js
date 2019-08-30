@@ -1,44 +1,51 @@
-const commonChars = (arr) => {
+const makeObj = (str) => {
   const obj = {};
-  const tempObj = {};
-
-  const test = arr.map((word) => {
-    let letter = word.split('');
-    // console.log('word', word);
-
-    for (const key in obj) {
-      if (!obj.hasOwnProperty(letter)) {
-        obj[letter] = [letter];
-      }
-      if (obj.hasOwnProperty(key)) {
-        obj[key].push(letter);
-      }
+  str.split('').forEach((letter) => {
+    if (!obj.hasOwnProperty(letter)) {
+      obj[letter] = [letter];
+    } else {
+      obj[letter].push(letter);
     }
-    return obj;
   });
+  return obj;
+};
 
-  return test;
+const sameLetters = (original, compare) => {
+  for (const letter in original) {
+    if (!compare[letter]) {
+      delete original[letter];
+    }
+  }
+  return original;
+};
 
-  // // Online Solution
-  // const [first, ...rest] = arr.sort((a, b) => -(a.length - b.length));
-  // const duplicates = [];
-  // [...first].forEach((e) => {
-  //   let isDuplicate = true;
-  //   for (let x = 0, len = rest.length; x < len; x++) {
-  //     let letters = rest[x];
-  //     const i = letters.search(e);
-  //     if (i !== -1) {
-  //       letters = letters.slice(0, i) + letters.slice(i + 1);
-  //       rest[x] = letters;
-  //     } else {
-  //       isDuplicate = false;
-  //     }
-  //   }
-  //   if (isDuplicate) {
-  //     duplicates.push(e);
-  //   }
-  // });
-  // return duplicates;
+const sameOccurances = (original, compare) => {
+  for (const letter in original) {
+    if (compare[letter].length < original[letter].length) {
+      original[letter] = compare[letter];
+    }
+  }
+  return original;
+};
+
+const commonChars = (arr) => {
+  const [first, ...rest] = arr;
+  // console.log('rest', rest);
+  console.log('first', first);
+  console.log('rest', rest);
+
+  let obj = makeObj(first);
+  let temp;
+
+  rest.forEach((word) => {
+    temp = makeObj(word);
+    // same characters
+    sameLetters(obj, temp);
+
+    // same number of letters
+    sameOccurances(obj, temp);
+  });
+  return [].concat(...Object.values(obj));
 };
 
 const assertEqual = (result, expected, testName) => {
@@ -55,14 +62,20 @@ const assertEqual = (result, expected, testName) => {
   }
 };
 
-const arr1 = ['bella', 'label', 'roller'];
+const arr1 = ['bellasrl', 'label', 'roller'];
+const makeObjActual = makeObj(arr1[0]);
+// console.log('makeObjActual', makeObjActual);
 const actualOne = commonChars(arr1);
 console.log('actualOne', actualOne);
 const expectedOne = ['e', 'l', 'l'];
 // assertEqual(actualOne, expectedOne, 'commonChars');
 
 const arr2 = ['cool', 'lock', 'cook'];
-// const actualTwo = commonChars(arr2);
-// console.log('actualTwo', actualTwo);
+const actualTwo = commonChars(arr2);
+console.log('actualTwo', actualTwo);
 const expectedTwo = ['c', 'o'];
 // assertEqual(actualTwo, expectedTwo, 'commonChars');
+
+const arr3 = ['aaa', 'bbb', 'ccc'];
+const actualThree = commonChars(arr3);
+console.log('actualThree', actualThree);
