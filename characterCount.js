@@ -1,9 +1,9 @@
 const charCount = (str) => {
-  // const obj = {};
+  const obj = {};
 
-  // for (const letter of str) {
-  //   obj[letter] = (obj[letter] || 0) + 1;
-  // }
+  for (const letter of str) {
+    obj[letter] = (obj[letter] || 0) + 1;
+  }
   // const keys = Object.keys(obj);
   // const values = Object.values(obj);
 
