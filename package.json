@@ -1,0 +1,23 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "leet code practice",
+  "main": "allAnagrams.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cali3192/leetcodepractice.git"
+  },
+  "keywords": [
+    "leetcode",
+    "practice"
+  ],
+  "author": "Cali Tabilas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cali3192/leetcodepractice/issues"
+  },
+  "homepage": "https://github.com/cali3192/leetcodepractice#readme"
+}

@@ -1,23 +1,44 @@
 const commonChars = (arr) => {
-  const [first, ...rest] = arr.sort((a, b) => -(a.length - b.length));
-  const duplicates = [];
-  [...first].forEach((e) => {
-    let isDuplicate = true;
-    for (let x = 0, len = rest.length; x < len; x++) {
-      let letters = rest[x];
-      const i = letters.search(e);
-      if (i !== -1) {
-        letters = letters.slice(0, i) + letters.slice(i + 1);
-        rest[x] = letters;
-      } else {
-        isDuplicate = false;
+  const obj = {};
+  const tempObj = {};
+
+  const test = arr.map((word) => {
+    let letter = word.split('');
+    // console.log('word', word);
+
+    for (const key in obj) {
+      if (!obj.hasOwnProperty(letter)) {
+        obj[letter] = [letter];
+      }
+      if (obj.hasOwnProperty(key)) {
+        obj[key].push(letter);
       }
     }
-    if (isDuplicate) {
-      duplicates.push(e);
-    }
+    return obj;
   });
-  return duplicates;
+
+  return test;
+
+  // // Online Solution
+  // const [first, ...rest] = arr.sort((a, b) => -(a.length - b.length));
+  // const duplicates = [];
+  // [...first].forEach((e) => {
+  //   let isDuplicate = true;
+  //   for (let x = 0, len = rest.length; x < len; x++) {
+  //     let letters = rest[x];
+  //     const i = letters.search(e);
+  //     if (i !== -1) {
+  //       letters = letters.slice(0, i) + letters.slice(i + 1);
+  //       rest[x] = letters;
+  //     } else {
+  //       isDuplicate = false;
+  //     }
+  //   }
+  //   if (isDuplicate) {
+  //     duplicates.push(e);
+  //   }
+  // });
+  // return duplicates;
 };
 
 const assertEqual = (result, expected, testName) => {
