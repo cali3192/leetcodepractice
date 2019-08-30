@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/cali3192/leetcodepractice/issues"
   },
-  "homepage": "https://github.com/cali3192/leetcodepractice#readme"
+  "homepage": "https://github.com/cali3192/leetcodepractice#readme",
+  "dependencies": {
+    "typescript": "^3.6.2"
+  }
 }
