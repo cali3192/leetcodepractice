@@ -12,9 +12,7 @@ const makeObj = (str) => {
 
 const sameLetters = (original, compare) => {
   for (const letter in original) {
-    if (!compare[letter]) {
-      delete original[letter];
-    }
+    if (!compare[letter]) delete original[letter];
   }
   return original;
 };
@@ -28,24 +26,80 @@ const sameOccurances = (original, compare) => {
   return original;
 };
 
+// // Initial Solution
+// const commonChars = (arr) => {
+//   const [first, ...rest] = arr;
+//   // console.log('rest', rest);
+//   console.log('first', first);
+//   console.log('rest', rest);
+
+//   let obj = makeObj(first);
+//   let temp;
+
+//   rest.forEach((word) => {
+//     temp = makeObj(word);
+//     // same characters
+//     sameLetters(obj, temp);
+
+//     // same number of letters
+//     sameOccurances(obj, temp);
+//   });
+//   return [].concat(...Object.values(obj));
+// };
+
 const commonChars = (arr) => {
-  const [first, ...rest] = arr;
-  // console.log('rest', rest);
-  console.log('first', first);
-  console.log('rest', rest);
-
-  let obj = makeObj(first);
-  let temp;
-
-  rest.forEach((word) => {
-    temp = makeObj(word);
-    // same characters
-    sameLetters(obj, temp);
-
-    // same number of letters
-    sameOccurances(obj, temp);
-  });
-  return [].concat(...Object.values(obj));
+  // if (arr.length === 0) return [];
+  // return arr[0].split('').forEach((letter) => {
+  // return `${letter} and ${arr}`;
+  // arr.forEach((word) => {
+  //   return `${letter} and ${word}`;
+  // });
+  //   for (let i = 0; i < arr.length; i++) {
+  //     console.log(`${letter} ==> ${arr}`);
+  //     return `${letter} ==> ${arr}`;
+  //     // const index = arr[i].indexOf(letter);
+  //     // if(index) {
+  //     //   //
+  //     // }
+  //   }
+  //   // return arr.forEach((word) => {
+  //   // word.indexOf(letter);
+  //   // let index = word.indexOf(letter);
+  //   // if (index) {
+  //   //   word = word.replace(letter, '');
+  //   // }
+  //   // });
+  // });
+  // if(arr.length==0)return []
+  // return arr[0].split('').map(m=>{
+  //     for(let i =1;i < arr.length;i++){
+  //         let index = arr[i].indexOf(m)
+  //         if(index==-1){
+  //             return null
+  //         }
+  //         else{
+  //             arri] = arr[i].replace(m,'')
+  //         }
+  //     }
+  //     return m
+  // }).filter(m=>m!=null)
+  if (arr.length === 0) return null;
+  return arr[0]
+    .split('')
+    .map((letter) => {
+      for (let i = 0; i < arr.length; i++) {
+        let index = arr[i].indexOf(letter);
+        if (index === -1) {
+          return null;
+        } else {
+          return arr[i].replace(letter, '');
+        }
+      }
+      return letter;
+    })
+    .filter((letter) => {
+      letter !== null;
+    });
 };
 
 const assertEqual = (result, expected, testName) => {
@@ -72,10 +126,10 @@ const expectedOne = ['e', 'l', 'l'];
 
 const arr2 = ['cool', 'lock', 'cook'];
 const actualTwo = commonChars(arr2);
-console.log('actualTwo', actualTwo);
+// console.log('actualTwo', actualTwo);
 const expectedTwo = ['c', 'o'];
 // assertEqual(actualTwo, expectedTwo, 'commonChars');
 
 const arr3 = ['aaa', 'bbb', 'ccc'];
 const actualThree = commonChars(arr3);
-console.log('actualThree', actualThree);
+// console.log('actualThree', actualThree);
