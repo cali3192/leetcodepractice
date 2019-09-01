@@ -15,3 +15,18 @@ const actual = isAnagramTS('anagram', 'nagaram');
 console.time();
 console.log('actual', actual);
 console.timeEnd();
+
+// const returnArr = (arr: Array<String>): Array<any> => {
+// Number must be lower case in order for this function to work
+const returnArr = (arr: Array<number>): Array<any> => {
+  return arr.map((num) => {
+    return num ** 2;
+  });
+};
+
+const returnArrTest = [1, 2, 3, 4];
+// const returnArrTest = ['hello', 'world'];
+const returnArrActual = returnArr(returnArrTest);
+console.log('returnArrActual', returnArrActual);
+// const newArr = returnArr('test');
+// console.log('newArr', newArr);

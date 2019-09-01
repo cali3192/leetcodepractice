@@ -1,15 +1,19 @@
 const evenOccurrence = (arr) => {
   // return arr;
-  const mapVal = new Map();
-  arr.forEach((element) => {
-    if (!mapVal.has(element)) {
-      mapVal.set(element, { val: 1 });
+  const toObj = arr.reduce((acc, elem) => {
+    acc.hasOwnProperty(elem) ? acc[elem]++ : (acc[elem] = 1);
+    return acc;
+  }, {});
+
+  for (const key in toObj) {
+    if (toObj[key] % 2 !== 0) {
+      delete key;
     }
-    mapVal.get(element).val++;
-  });
+  }
 
-let result = []
-
+  return Object.keys(toObj).map(elem => {
+    if(typeof elem === )
+  })
 };
 
 let testArr = [1, 4, 6, 6, 4];
