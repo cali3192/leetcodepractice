@@ -30,3 +30,14 @@ const returnArrActual = returnArr(returnArrTest);
 console.log('returnArrActual', returnArrActual);
 // const newArr = returnArr('test');
 // console.log('newArr', newArr);
+
+const lengthOfLastWord = (str: String): Number => {
+  const arr = str.trim().split(' ');
+  return arr[arr.length - 1].length;
+};
+
+const lengthOfLastWordActual = lengthOfLastWord(
+  'what is the length of the last word in this string'
+);
+
+console.log('lengthOfLastWordActual', lengthOfLastWordActual);
