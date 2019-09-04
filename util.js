@@ -1,6 +1,3 @@
-/// <reference path='./tsUtil.ts'/>
-// console.log(`Hello Typescript`);
-// stricter you are with types, it prevents you from making compiler erroers
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -14,6 +11,26 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var Utility;
+(function (Utility) {
+    var MultiplyTwo = /** @class */ (function () {
+        function MultiplyTwo() {
+        }
+        MultiplyTwo.prototype.timesTwo = function (num) {
+            return num * 2;
+        };
+        return MultiplyTwo;
+    }());
+    Utility.MultiplyTwo = MultiplyTwo;
+})(Utility || (Utility = {}));
+// export interface MultiplyTwo {
+//   export classtimesTwo(num: number): number {
+//     return num * 2
+//   }
+// }
+/// <reference path='./tsUtil.ts'/>
+// console.log(`Hello Typescript`);
+// stricter you are with types, it prevents you from making compiler erroers
 var sayHello = function (str) {
     console.log("hello " + str);
     return "hello " + str;

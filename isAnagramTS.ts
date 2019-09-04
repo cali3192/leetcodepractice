@@ -41,3 +41,20 @@ const lengthOfLastWordActual = lengthOfLastWord(
 );
 
 console.log('lengthOfLastWordActual', lengthOfLastWordActual);
+
+const primeTester = (n: number): Boolean => {
+  if (n < 1 || n % 1 !== 0) return false;
+
+  let i = 2;
+  while (n > i) {
+    if (n % i !== 0) {
+      return true;
+    } else {
+      i++;
+      return false;
+    }
+  }
+};
+
+const primeTesterActual = primeTester(11);
+console.log('primeTesterActual', primeTesterActual);

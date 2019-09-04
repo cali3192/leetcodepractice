@@ -20,7 +20,11 @@
     "url": "https://github.com/cali3192/leetcodepractice/issues"
   },
   "homepage": "https://github.com/cali3192/leetcodepractice#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-typescript": "^5.0.1",
     "typescript": "^3.6.2"
   }
 }

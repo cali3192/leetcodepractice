@@ -31,5 +31,21 @@ var lengthOfLastWord = function (str) {
     var arr = str.trim().split(' ');
     return arr[arr.length - 1].length;
 };
-var lengthOfLastWordActual = lengthOfLastWord('what is the length of the last word in this stirng');
+var lengthOfLastWordActual = lengthOfLastWord('what is the length of the last word in this string');
 console.log('lengthOfLastWordActual', lengthOfLastWordActual);
+var primeTester = function (n) {
+    if (n < 1 || n % 1 !== 0)
+        return false;
+    var i = 2;
+    while (n > i) {
+        if (n % i !== 0) {
+            return true;
+        }
+        else {
+            i++;
+            return false;
+        }
+    }
+};
+var primeTesterActual = primeTester(4);
+console.log('primeTesterActual', primeTesterActual);
