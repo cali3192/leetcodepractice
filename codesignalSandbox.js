@@ -1,5 +1,5 @@
 // largestadjecent product
-const largestAdjecentProductArr = [1, 2, -2, -3, 7, 3];
+const largestAdjecentProductArr = [1, 2, -2, -3, 7, 3, 8];
 
 const largestAdjecent = (arr) => {
   let result = 0;
