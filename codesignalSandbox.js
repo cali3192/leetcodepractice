@@ -14,4 +14,7 @@ const largestAdjecent = (arr) => {
   return result;
 };
 
-console.log('largestAdjecent() \n', largestAdjecent(largestAdjecentProductArr));
+console.log(
+  '1. largestAdjecent() \n',
+  largestAdjecent(largestAdjecentProductArr)
+);
