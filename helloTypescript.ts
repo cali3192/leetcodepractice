@@ -1,3 +1,4 @@
+/// <reference path='./tsUtil.ts'/>
 // console.log(`Hello Typescript`);
 // stricter you are with types, it prevents you from making compiler erroers
 
@@ -70,31 +71,88 @@ console.log('hasAge', hasAge);
 console.log(`Classes \n\n`);
 
 // Classes
-class Stark {
-  name: String;
-  // the static property is accessible from the class blueprint
-  // 'Da North' is the default property
-  static region: String = 'Da North';
-  motto: String;
+// class Stark {
+//   name: String;
+//   // the static property is accessible from the class blueprint
+//   // 'Da North' is the default property
+//   static region: String = 'Da North';
+//   motto: String;
 
-  // they can have constructors, functions when the class runs
-  constructor() {
-    // this gives the motto a default motto
-    this.motto = `Winter is coming`;
+//   // they can have constructors, functions when the class runs
+//   constructor() {
+//     // this gives the motto a default motto
+//     this.motto = `Winter is coming`;
+//   }
+
+//   // classes can have methods
+//   sayHello(person: String) {
+//     console.log(`Hello, ${person}`);
+//   }
+// }
+
+// // the static property is available before we creawte a new instance of a Stark
+// console.log('Stark.region', Stark.region);
+
+// //  new instance
+// const Ned = new Stark();
+// console.log('Ned.motto', Ned.motto);
+
+// // our method
+// Ned.sayHello(`Cersei`);
+
+class Person {
+  name: string;
+  // don't forget this line!
+  constructor(name: string) {
+    this.name = name;
   }
-
-  // classes can have methods
-  sayHello(person: String) {
-    console.log(`Hello, ${person}`);
+  dance() {
+    console.log(`${this.name} is dancing!`);
   }
 }
 
-// the static property is available before we creawte a new instance of a Stark
-console.log('Stark.region', Stark.region);
+const bran = new Person('Bran');
+bran.dance();
 
-//  new instance
-const Ned = new Stark();
-console.log('Ned.motto', Ned.motto);
+// Another example
+class Animal {
+  name: string;
+  constructor(theName: string) {
+    this.name = theName;
+  }
+  move(distance: number = 0) {
+    console.log(`${this.name} moved ${distance} meters`);
+  }
+}
 
-// our method
-Ned.sayHello(`Cersei`);
+class Snake extends Animal {
+  constructor(name: string) {
+    super(name);
+  }
+  move(distance = 5) {
+    console.log('Slithering...');
+    super.move(distance);
+  }
+}
+
+class Horse extends Animal {
+  constructor(name: string) {
+    super(name);
+  }
+  move(distance = 45) {
+    console.log('Galloping...');
+    super.move(distance);
+  }
+}
+
+let sam = new Snake('Sammy the Python');
+let tom: Animal = new Horse('Tommy the Palomino');
+
+sam.move();
+tom.move(34);
+
+// Modules in Typescript
+console.log(`\n\n Typescript Modules`);
+const use = new Utility.MultiplyTwo();
+console.log('use', use);
+console.log('use.timesTwo(3)', use.timesTwo(3));

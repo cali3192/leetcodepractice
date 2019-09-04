@@ -30,6 +30,11 @@ const isAnagram = (s, t) => {
   return true;
 };
 
+const isAnagram = (s, t) => {
+  if (t.length !== s.length) return false;
+  
+};
+
 console.time();
 const test = isAnagram('anagram', 'nagaram');
 console.log('test', test);
