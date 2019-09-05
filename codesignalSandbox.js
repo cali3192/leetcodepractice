@@ -6,20 +6,17 @@ const largestAdjecent = (arr) => {
 
   for (let i = 1; i < arr.length; i++) {
     const elem = arr[i];
-    const pre = arr[i - 1];
-    const prod = elem * pre;
-    if (prod > result) result = prod;
+    // const pre = arr[i - 1];
+    // const prod = elem * arr[i - 1];
+    if (elem * arr[i - 1] > result) result = elem * arr[i - 1];
   }
 
   return result;
 };
 
-// console.log(
-//   '1. largestAdjecent() \n',
-//   largestAdjecent(largestAdjecentProductArr)
-// );
+console.log('1. largestAdjecent', largestAdjecent(largestAdjecentProductArr));
 
-function almostIncreasingSequence(sequence) {
+const almostIncreasingSequence = (sequence) => {
   let result = 0;
   for (let i = 1; i < sequence.length; i++)
     if (sequence[i] <= sequence[i - 1]) {
@@ -29,9 +26,9 @@ function almostIncreasingSequence(sequence) {
         return false;
     }
   return true;
-}
+};
 
-function matrixElementsSum(matrix) {
+const matrixElementsSum = (matrix) => {
   // const arr = matrix.flat(1);
 
   // TODO: don't forget this!
@@ -51,13 +48,13 @@ function matrixElementsSum(matrix) {
     }
   }
   return result;
-}
+};
 
 const matrixTest = [[0, 1, 1, 2], [0, 5, 0, 0], [2, 0, 3, 3]];
 
 // console.log('matrixElementsSum(matrixTest)', matrixElementsSum(matrixTest));
 
-function allLongestStrings(inputArray) {
+const allLongestStrings = (inputArray) => {
   const longest = inputArray.sort((a, b) => {
     return b.length - a.length;
   })[0].length;
@@ -65,7 +62,7 @@ function allLongestStrings(inputArray) {
   return inputArray.filter((word) => {
     return word.length === longest;
   });
-}
+};
 
 inputArray = ['aba', 'aa', 'ad', 'vcd', 'aba'];
 const allLongestActual = allLongestStrings(inputArray);
@@ -83,7 +80,7 @@ const makeObj = (str) => {
   return obj;
 };
 
-function commonCharacterCount(s1, s2) {
+const commonCharacterCount = (s1, s2) => {
   let obj1 = makeObj(s1);
   let obj2 = makeObj(s2);
 
@@ -100,62 +97,13 @@ function commonCharacterCount(s1, s2) {
   }
 
   return total;
-}
+};
 
 let s1 = 'aabcc';
 let s2 = 'adcaa';
 
 const commonCharacterCountActual = commonCharacterCount(s1, s2);
-// console.log('commonCharacterCountActual', commonCharacterCountActual);
-
-const removeFirstLastZero = (str) => {
-  if (str[0] === '0') {
-    return str.slice(1, str.length);
-  }
-
-  if (str[str.length - 1] === '0') {
-    return str.slice(0, str.length - 1);
-  }
-
-  return str;
-};
-
-// function isLucky(n) {
-//   const numStr = `${n}`;
-//   const half = numStr.length / 2;
-//   // return numStr.substring(0, half);
-
-//   const obj = {};
-//   numStr.split('').forEach((elem) => {
-//     if (!obj.hasOwnProperty(elem)) {
-//       obj[elem] = true;
-//     }
-//   });
-
-//   if (Object.keys(obj).length === 1) {
-//     return true;
-//   }
-
-//   if (
-//     numStr
-//       .substring(0, half)
-//       .split('')
-//       .reverse()
-//       .join('') === numStr.substring(half, numStr.length)
-//   ) {
-//     return true;
-//   }
-//   let firstSum = numStr
-//     .substring(0, half)
-//     .split('')
-//     .reduce((a, b) => {
-//       return parseFloat(a) + parseFloat(b);
-//     });
-
-//   let second = numStr.substring(half, numStr.length);
-//   let secondTrimmed = parseFloat(removeFirstLastZero(second));
-//   return firstSum === secondTrimmed;
-// }
+console.log('commonCharacterCountActual', commonCharacterCountActual);
 
 const sumString = (str) => {
   return str.split('').reduce((a, b) => {
@@ -165,7 +113,7 @@ const sumString = (str) => {
 
 const isLucky = (n) => {
   const toStr = `${n}`;
-  const half = toStr.length / 2;    
+  const half = toStr.length / 2;
   return (
     sumString(toStr.substr(half, toStr.length)) ===
     sumString(toStr.substr(0, half))
@@ -173,4 +121,4 @@ const isLucky = (n) => {
 };
 
 const isLuckyActual = isLucky(1203);
-console.log('isLuckyActual', isLuckyActual);
+// console.log('isLuckyActual', isLuckyActual);
