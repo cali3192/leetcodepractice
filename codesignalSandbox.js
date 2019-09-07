@@ -222,18 +222,6 @@ const alternatingSumsActual = alternatingSums(altSumArr);
 console.log('alternatingSumsActual', alternatingSumsActual);
 
 const addBorder = (picture) => {
-  /*
-  [
-    [],
-    [],
-    [],
-  ]
-  */
-  //
-  // foreach string
-  // unshift(*)
-  // push(*)
-  //
   let copy = picture.slice(0);
   // return copy;
   let fill = [...picture[0]].map((elem) => {
@@ -241,32 +229,22 @@ const addBorder = (picture) => {
       return (elem = '*');
     }
   });
+  let fillLast = fill.slice();
   // return fill;
   let matrix = copy.map((word) => {
     return word.split('');
   });
   matrix.unshift(fill);
-  matrix.push(fill);
+  matrix.push(fillLast);
   matrix.forEach((elem) => {
     //     // FIXME: the stupid buggy thing
-    // elem.unshift('*')
+    elem.unshift('*');
     elem.push('*');
   });
 
-  // matrix.forEach((elem) => {
-  //   elem.unshift('*');
-  // });
-
-  for (let i = 0; i < matrix.length; i++) {
-    const arr = matrix[i];
-    if (i === 0 || i === matrix.length - 1) {
-      arr.slice();
-    }
-  }
-
-  // return matrix.map((elem) => {
-  //   return elem.join('');
-  // });
+  return matrix.map((elem) => {
+    return elem.join('');
+  });
   return matrix;
 };
 
