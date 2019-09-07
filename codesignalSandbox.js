@@ -225,9 +225,7 @@ const addBorder = (picture) => {
   let copy = picture.slice(0);
   // return copy;
   let fill = [...picture[0]].map((elem) => {
-    if (elem !== '*') {
-      return (elem = '*');
-    }
+    return (elem = '*');
   });
   let fillLast = fill.slice();
   // return fill;
@@ -240,12 +238,13 @@ const addBorder = (picture) => {
     //     // FIXME: the stupid buggy thing
     elem.unshift('*');
     elem.push('*');
+    // elem.push('1');
   });
 
   return matrix.map((elem) => {
     return elem.join('');
   });
-  return matrix;
+  // return matrix;
 };
 
 /*
@@ -260,6 +259,7 @@ const addBorder = (picture) => {
  "****"]
 */
 
-const borderArr = ['aa', '**', 'zz'];
+const borderArr = ['wzy**']; // 5
+const expectedBorder = ['*******', '*wzy***', '*******'];
 const addBorderActual = addBorder(borderArr);
 console.log('addBorderActual', addBorderActual);
