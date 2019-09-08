@@ -263,3 +263,34 @@ const borderArr = ['wzy**']; // 5
 const expectedBorder = ['*******', '*wzy***', '*******'];
 const addBorderActual = addBorder(borderArr);
 console.log('addBorderActual', addBorderActual);
+
+const palindrom = (str) => {
+  const obj = {};
+
+  str.split('').forEach((letter) => {
+    if (!obj[letter]) {
+      obj[letter] = 1;
+    } else {
+      obj[letter]++;
+    }
+  });
+
+  return (
+    Object.values(obj).filter((elem) => {
+      return elem % 2 !== 0;
+    }).length <= 1
+  );
+};
+
+const palinActual = palindrom('abbcabb');
+console.log('palinActual', palinActual);
+
+const largestDiff = (arr) => {
+  // return Math.max(...arr.slice(1));
+
+  // return Math.max(...arr.slice(1).map((x, i) => Math.abs(x - arr[i])));
+};
+
+const diffArr = [2, 4, 1, 0];
+const largestDiffActual = largestDiff(diffArr);
+console.log('largestDiffActual', largestDiffActual);
