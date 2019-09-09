@@ -287,10 +287,33 @@ console.log('palinActual', palinActual);
 
 const largestDiff = (arr) => {
   // return Math.max(...arr.slice(1));
-
   // return Math.max(...arr.slice(1).map((x, i) => Math.abs(x - arr[i])));
 };
 
 const diffArr = [2, 4, 1, 0];
 const largestDiffActual = largestDiff(diffArr);
 console.log('largestDiffActual', largestDiffActual);
+
+// Minesweeper Questions
+
+const directions = [
+  [1, -1],
+  [1, 0],
+  [1, 1],
+  [0, -1],
+  [0, 1],
+  [-1, -1],
+  [-1, 0],
+  [-1, 1]
+];
+
+minesweeper = (matrix) =>
+  matrix.map((row, y) =>
+    row.map((col, x) =>
+      directions.reduce(
+        (count, i) =>
+          (count += !!(matrix[y + i[0]] && matrix[y + i[0]][x + i[1]])),
+        0
+      )
+    )
+  );
