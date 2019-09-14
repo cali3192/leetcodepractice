@@ -267,13 +267,9 @@ console.log('addBorderActual', addBorderActual);
 const palindrom = (str) => {
   const obj = {};
 
-  str.split('').forEach((letter) => {
-    if (!obj[letter]) {
-      obj[letter] = 1;
-    } else {
-      obj[letter]++;
-    }
-  });
+  for (let letter of str.split('')) {
+    obj[letter] = (obj[letter] || 0) + 1;
+  }
 
   return (
     Object.values(obj).filter((elem) => {
@@ -282,7 +278,7 @@ const palindrom = (str) => {
   );
 };
 
-const palinActual = palindrom('abbcabb');
+const palinActual = palindrom('aaazzzaaa');
 console.log('palinActual', palinActual);
 
 const largestDiff = (arr) => {
@@ -307,7 +303,7 @@ const directions = [
   [-1, 1]
 ];
 
-minesweeper = (matrix) =>
+minesweeper = (matrix) => {
   matrix.map((row, y) =>
     row.map((col, x) =>
       directions.reduce(
@@ -317,3 +313,144 @@ minesweeper = (matrix) =>
       )
     )
   );
+};
+
+const chessBoardCellColor = (cell1, cell2) => {
+  let sum1 = cell1.charCodeAt(0) + cell1.charCodeAt(1);
+  let sum2 = cell2.charCodeAt(0) + cell2.charCodeAt(1);
+  return sum1 % 2 == sum2 % 2;
+};
+
+let chessBoardCellColorActual = chessBoardCellColor('A1', 'C3');
+console.log('chessBoardCellColorActual', chessBoardCellColorActual);
+
+const boxBlur = (image) => {
+  let x = image[0].length - 2;
+  let y = image.length - 2;
+  let box = new Array(y);
+
+  for (let i = 0; i < y; i++) {
+    box[i] = new Array(x);
+    for (let j = 0; j < x; j++) {
+      box[i][j] =
+        image[i][j] +
+        image[i][j + 1] +
+        image[i][j + 2] +
+        image[i + 1][j] +
+        image[i + 1][j + 1] +
+        image[i + 1][j + 2] +
+        image[i + 2][j] +
+        image[i + 2][j + 1] +
+        image[i + 2][j + 2];
+      box[i][j] = Math.floor(box[i][j] / 9);
+    }
+  }
+  return box;
+};
+
+const avoidObstacles = (inputArray) => {
+  let step = 2;
+  var check = true;
+  while (check) {
+    step++;
+    check = inputArray.some((item) => {
+      return item % step == 0;
+    });
+  }
+  return step;
+};
+
+const arrayMaxConsecutiveSum = (inputArray, k) => {
+  // Initial Window Solution
+  // let result = 0;
+  // for (let i = 0; i < inputArray.length - k + 1; i++) {
+  //   let sum = inputArray.slice(i, i + k).reduce((a, b) => {
+  //     return a + b;
+  //   });
+  //   if (sum > result) {
+  //     result = sum;
+  //   }
+  // }
+  // return result;
+
+  let sum = inputArray.slice(0, k).reduce((x, y) => {
+    return x + y;
+  });
+
+  let result = sum;
+  for (let i = k; i < inputArray.length; i++) {
+    sum = sum - inputArray[i - k] + inputArray[i];
+    if (sum > result) {
+      result = sum;
+    }
+  }
+  return result;
+};
+
+let maxArr = [2, 3, 5, 1, 6];
+const maxArrActual = arrayMaxConsecutiveSum(maxArr, 3);
+console.log('maxArrActual', maxArrActual);
+
+const knapsackLight = (v1, w1, v2, w2, max) => {
+  if (w1 > max && w2 > max) {
+    return 0;
+  } else if (w1 + w2 <= max) {
+    return v1 + v2;
+  } else if (w1 <= max && w2 > max) {
+    return v1;
+  } else if (w2 <= max && w1 > max) {
+    return v2;
+  } else {
+    return v1 > v2 ? v1 : v2;
+  }
+};
+
+const longestDigitsPrefix = (inputString) => {
+  let temp = '';
+  if (inputString.length == 0) {
+    return '';
+  }
+  for (let i = 0; i < inputString.length; i++) {
+    if (inputString[i] > '9' || inputString[i] < '0') {
+      break;
+    } else {
+      temp += inputString[i];
+    }
+  }
+  return temp;
+};
+
+const digitsActual = longestDigitsPrefix('the output is 42');
+// const digitsActual = longestDigitsPrefix('123hiiiii12');
+console.log('digitsActual', digitsActual);
+
+function addDigits(n, m) {
+  if (n < 10) return m;
+  else {
+    var t = 0;
+    while (n > 0) {
+      t += n % 10;
+      n = Math.floor(n / 10);
+    }
+    return addDigits(t, m + 1);
+  }
+}
+
+function digitDegree(n) {
+  return addDigits(n, 0);
+}
+
+let addDigitsActual = addDigits(877);
+console.log('addDigitsActual', addDigitsActual);
+
+// Bishops and Pawns
+const bishopAndPawn = (bishop, pawn) => {
+  const cols = bishop.charCodeAt(0) - pawn.charCodeAt(0);
+  const rows = parseFloat(bishop[1]) - parseFloat(pawn[1]);
+
+  return Math.abs(cols) === Math.abs(rows);
+};
+
+const bishopActual = bishopAndPawn('a1', 'b2');
+console.log('bishopActual', bishopActual);
+// return Math.abs((bishop.charCodeAt(0) - 96) - (pawn.charCodeAt(0) - 96)) == (Math.abs(bishop.charAt(1) - pawn.charAt(1)));

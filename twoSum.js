@@ -22,14 +22,19 @@ const twoSum = (nums, target) => {
   //   }
   // }
 
+  let result = [];
+
   const numsMap = new Map();
   for (let i = 0; i < nums.length; i++) {
     if (numsMap.has(target - nums[i])) {
+      result.push([target - nums[i], i]);
       return [numsMap.get(target - nums[i]), i];
     } else {
       numsMap.set(nums[i], i);
     }
   }
+  return result;
+  // return numsMap;
 };
 
 const twoSumnums = [2, 7, 11, 15];
