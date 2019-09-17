@@ -454,3 +454,32 @@ const bishopAndPawn = (bishop, pawn) => {
 const bishopActual = bishopAndPawn('a1', 'b2');
 console.log('bishopActual', bishopActual);
 // return Math.abs((bishop.charCodeAt(0) - 96) - (pawn.charCodeAt(0) - 96)) == (Math.abs(bishop.charAt(1) - pawn.charAt(1)));
+
+const isBeautifulString = (str) => {
+  // track occurances in an object
+  const obj = {};
+  for (let letter of str.split('')) {
+    obj[letter] = (obj[letter] || 0) + 1;
+  }
+
+  // sort letters alphabetically
+  const keys = Object.keys(obj).sort();
+
+  // return obj;
+  if ((obj['a'] > obj['z'] && !obj.hasOwnProperty('y')) || keys[0] !== 'a') {
+    return false;
+  }
+
+  // uses sorted arr to search for associated keys in obj
+  for (let i = 0; i < keys.length - 1; i++) {
+    if (obj[keys[i + 1]] > obj[keys[i]]) {
+      return false;
+    }
+  }
+  return true;
+};
+
+const isBeautifulActual = isBeautifulString(
+  'abcdefghijklmnopqrstuvwxyzqwertuiopasdfghjklxcvbnm'
+);
+console.log('isBeautifulActual', isBeautifulActual);
