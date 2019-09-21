@@ -126,3 +126,81 @@ const assertEqual = (result, expected, testName) => {
 const actualOne = convertToInt('-123');
 const expectedOne = -123;
 // assertEqual(actualOne, expectedOne, 'convertToInt');
+
+// Election Winner
+// const electionsWinners = (votes, k) => {
+//   let max = Math.max(...votes);
+//   let n;
+//   if (k == 0) {
+//     n =
+//       votes.filter((vote) => {
+//         return vote === max;
+//       }).length === 1
+//         ? 1
+//         : 0;
+//   }
+
+//   n = votes.filter((vote) => {
+//     return vote + k > max;
+//   }).length;
+
+//   return n;
+// };
+const electionsWinners = (votes, k) => {
+  let max = Math.max(...votes);
+  let n;
+  if (k === 0) {
+    return votes.filter((vote) => {
+      return vote === max;
+    }).length === 1
+      ? 1
+      : 0;
+  }
+  n = votes.filter((vote) => {
+    return vote + k > max;
+  }).length;
+
+  return n;
+};
+
+// const electionsWinnersActual = electionsWinners([2, 3, 5, 2], 3);
+const electionsWinnersActual = electionsWinners([5, 1, 3, 4, 1], 0);
+console.log('electionsWinnersActual', electionsWinnersActual);
+
+const isMAC48Address = (str) => {
+  let strArr = str.split('-');
+
+  if (strArr.length !== 6) return false;
+
+  const arr = strArr.join('').split('');
+
+  for (let i = 0; i < arr.length; i++) {
+    const letter = arr[i];
+    if (letter.charCodeAt(0) > 70) {
+      return false;
+    }
+
+    if (parseFloat(letter) > 10) {
+      return false;
+    }
+  }
+  return true;
+
+  // return (
+  //   arr.filter((letter) => {
+  //     return (
+  //       (letter.charCodeAt(0) >= 65 && letter.charCodeAt(0) <= 70) ||
+  //       (parseFloat(letter) >= 0 && parseFloat(letter) <= 9)
+  //     );
+  //   }).length === 12
+  // );
+};
+
+// const isMacAddressActual = isMAC48Address('00-1B-63-84-45-E6');
+const isMacAddressActual = isMAC48Address('12-34-56-78-9A-BG"');
+console.log('isMacAddressActual', isMacAddressActual);
+
+// charcodes 65-70
+// console.log('F'.charCodeAt(0));
+// console.log(!!parseFloat('A'));
+// console.log(!!parseFloat('6'));
