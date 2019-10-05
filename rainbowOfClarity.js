@@ -166,3 +166,16 @@ const deleteDigit = (n) => {
 
 const deleteDigitActual = deleteDigit('152');
 console.log('\n deleteDigitActual', deleteDigitActual);
+
+/*
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+
+const productExceptSelfDiv = (nums) => {
+  const product = nums.reduce((a, b) => a * b);
+  return nums.map((num) => product / num);
+};
+
+const actual = productExceptSelfDiv([1, 2, 3, 4]);
+console.log('actual', actual);
