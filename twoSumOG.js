@@ -22,24 +22,45 @@ const twoSum = (nums, target) => {
   //   }
   // }
 
-  let result = [];
+  // const numsMap = new Map();
+  // for (let i = 0; i < nums.length; i++) {
+  //   if (numsMap.has(target - nums[i])) {
+  //     // result.push([target - nums[i], i]);
+  //     return [numsMap.get(target - nums[i]), i];
+  //   } else {
+  //     numsMap.set(nums[i], i);
+  //   }
+  // }
+  // return [];
 
-  const numsMap = new Map();
-  for (let i = 0; i < nums.length; i++) {
-    if (numsMap.has(target - nums[i])) {
-      // result.push([target - nums[i], i]);
-      return [numsMap.get(target - nums[i]), i];
-    } else {
-      numsMap.set(nums[i], i);
+  // pointer method
+  // const sorted = nums.sort((a, b) => a - b);
+
+  // set a left and right pointer
+  let left = 0;
+  let right = nums.length - 1;
+
+  while (left < right) {
+    const sum = nums[left] + nums[right];
+    if (sum === target) {
+      console.log('===', left);
+      console.log('nums[left], nums[right]', nums[left], nums[right]);
+      return [left, right];
+    } else if (Math.max(sum, target) === target) {
+      console.log('left else if', left);
+      left++;
+    } else if (Math.max(sum, target) === sum) {
+      console.log('right else', right);
+      right--;
     }
   }
-  // return [...numsMap];
-  // return result;
-  // return numsMap;
+  return [];
 };
 
 const twoSumnums = [2, 7, 11, 15];
-console.time();
 const twoActual = twoSum(twoSumnums, 9);
-console.timeEnd();
-console.log('twoActual', twoActual);
+
+const actual = twoSum([3, 2, 4], 6); // [0, 2]
+
+console.log('twoActual', twoActual); // [0,1]
+console.log('actual', actual); // [1, 2]
