@@ -12,4 +12,4 @@ const removeDuplicates = (nums) => {
 };
 
 const actual = removeDuplicates([1, 1, 2]);
-console.log('actual', actual);
+console.log('actual ', actual);
