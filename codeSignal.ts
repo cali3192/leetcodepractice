@@ -28,25 +28,23 @@
 // const addBorderActualTS = addBorderTS(borderArrTS);
 // console.log('addBorderActualTS', addBorderActualTS);
 
-const arrayChange = (arr: Array<number>): Number => {
+const arrayChange = (arr: Array<number>): number => {
   let count = 0;
 
   for (let i = 1; i < arr.length; i++) {
-    let curr = arr[i];
-    let prev = arr[i - 1];
     if (arr[i - 1] >= arr[i]) {
-      let diff = arr[i - 1] - arr[i] + 1;
+      const diff = arr[i - 1] - arr[i] + 1;
       arr[i] = arr[i - 1] + 1;
       count += diff;
     }
   }
-  return count;
+  return count * 1000;
 };
 
 const arrChange = [1, 1, 1];
 // inputArray: [2, 1, 10, 1] // 12
 const arrChangeActual = arrayChange(arrChange);
-console.log('arrChangeActual', arrChangeActual);
+console.log("arrChangeActual", arrChangeActual);
 
 // const palindromChecker = (str: String): Boolean => {
 //   const obj = {};
@@ -60,4 +58,4 @@ const largestDiff = (arr: number[]): number => {
 
 const diffArr = [2, 4, 1, 0];
 const largestDiffActual = largestDiff(diffArr);
-console.log('largestDiffActual', largestDiffActual);
+console.log("largestDiffActual", largestDiffActual);
