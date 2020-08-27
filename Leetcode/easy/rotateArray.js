@@ -52,17 +52,36 @@
  * 176 ms	38.2 MB
  */
 
+// const rotate = (nums, k) => {
+//   let count = 1;
+
+//   while (count <= k) {
+//     let current = nums.pop();
+//     nums.unshift(current);
+//     console.log("LOG: rotate -> current", { current, nums });
+//     count++;
+//   }
+
+//   return nums;
+// };
+
+// const rotate = (nums, k) => {
+//   const result = [];
+//   for (let index = 0; index < nums.length; index++) {
+//     const res = (index + k + 1) % nums.length;
+//     console.log({ index, res });
+
+//     result.push(nums[res]);
+//   }
+
+//   return result;
+// };
+
 const rotate = (nums, k) => {
-  let count = 1;
-
-  while (count <= k) {
-    let current = nums.pop();
-    nums.unshift(current);
-    console.log("LOG: rotate -> current", { current, nums });
-    count++;
-  }
-
-  return nums;
+  return nums.map((element, index) => {
+    const rotatedIndex = (index + k + 1) % nums.length;
+    return nums[rotatedIndex];
+  });
 };
 
 const nums = [1, 2, 3, 4, 5, 6, 7];

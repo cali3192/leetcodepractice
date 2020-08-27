@@ -90,8 +90,6 @@ const twoSum = (nums, target) => {
       return [hash[diff], index];
     }
     hash[nums[index]] = index;
-
-    console.log(`LOG: `, { index, diff, hash });
   }
 };
 
