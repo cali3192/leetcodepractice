@@ -34,7 +34,7 @@
 // };
 
 /**
- ** Solution 2: Left and Right Pointer
+ ** Solution 2: Anchor and Next pointer start at DIFFERENT points
  * 76 ms	39.9 MB
  *
  * Runtime:
@@ -63,6 +63,17 @@ const moveZeroes = (nums) => {
 
   return nums;
 };
+
+/**
+ ** Solution 3: Anchor and Next pointer start at SAME points
+ * 76 ms	39.9 MB
+ *
+ * Runtime:
+ * 76 ms, faster than 91.49% of JavaScript online submissions for Move Zeroes.
+ *
+ * Memory Usage:
+ * 39.9 MB, less than 5.07% of JavaScript online submissions for Move Zeroes.
+ */
 
 //                l            r
 const inputArr = [1, 0, 0, 3, 12];
