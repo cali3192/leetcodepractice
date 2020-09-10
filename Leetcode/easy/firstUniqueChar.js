@@ -13,8 +13,10 @@
  */
 
 /**
- ** Better Solution
- * Solution 1: Hash
+ *
+ * Better Solution
+ ** Solution 1: Hash
+ *
  * Runtime:
  * 96 ms, faster than 96.20% of JavaScript online submissions for First Unique Character in a String.
  *
@@ -55,9 +57,9 @@ const firstUniqChar = (s) => {
   return -1;
 };
 
-/*
+/**
  *
- * Solution 2: Map
+ ** Solution 2: Map
  *
  * Runtime:
  * 172 ms, faster than 20.72% of JavaScript online submissions for First Unique Character in a String
