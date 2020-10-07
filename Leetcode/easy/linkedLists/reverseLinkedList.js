@@ -20,6 +20,8 @@ function ListNode(val, next) {
 const reverseList = (head) => {
   // current node, ref to previous and a temp
   let node = head;
+
+  // prev needs to be null because it will be the node.next
   let prev = null;
   let temp = null;
 
