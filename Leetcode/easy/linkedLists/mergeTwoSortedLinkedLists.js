@@ -19,6 +19,7 @@ const mergeTwoLists = (l1, l2) => {
 
   // while either exists
   while (!!l1 || !!l2) {
+    // can only move is l1 does exist - so you can make the comparison
     if (l1 && (!l2 || l1.val <= l2.val)) {
       dummy.next = l1;
       l1 = l1.next;

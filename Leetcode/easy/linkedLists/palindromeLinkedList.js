@@ -51,21 +51,21 @@ const isPalindrome = (head) => {
   fast = head;
 
   // reverse for a new linked list
-  const reversedHalf = reverseList(slow);
+
   console.log("LOG: ", { reversedHalf });
 
-  // // slow is at head of half
-  // slow = reversedHalf;
-  // console.log(`LOG: `, { slow });
+  // slow is at head of half
+  slow = reversedHalf;
 
-  // while (fast && slow) {
-  //   if (fast.val !== slow.val) {
-  //     return false;
-  //   }
-  //   fast = fast.next;
-  //   slow = slow.next;
-  // }
 
-  // // while both exist, compare nodes
-  // return true;
+  while (fast && slow) {
+    if (fast.val !== slow.val) {
+      return false;
+    }
+    fast = fast.next;
+    slow = slow.next;
+  }
+
+  // while both exist, compare nodes
+  return true;
 };
