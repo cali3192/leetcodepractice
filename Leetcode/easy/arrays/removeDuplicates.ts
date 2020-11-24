@@ -57,7 +57,9 @@
  *
  */
 
-const removeDuplicates = (nums) => {
+const removeDuplicates = (nums: number[]): number => {
+  // edge cases NOTE: algo will still work without them
+
   // index 0 is always going to be unique so we can start comparing at 1
   let index = 1;
 
