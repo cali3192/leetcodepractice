@@ -35,10 +35,10 @@ var fizzBuzz = function (n) {
   let i = 1;
   const fizz = 3;
   const buzz = 5;
-  const fizzbuzz = fizz * buzz;
+  // const fizzbuzz = fizz * buzz;
 
   while (i <= n) {
-    if (i % fizzbuzz === 0) {
+    if (i % fizz === 0 && i % buzz === 0) {
       arr.push("FizzBuzz");
     } else if (i % buzz === 0) {
       arr.push("Buzz");
@@ -57,5 +57,5 @@ const testConstructArr = constructArray(15);
 
 const testConvert = convertString("2");
 
-const test = fizzBuzz(0);
+const test = fizzBuzz(15);
 console.log("LOG: ", test);
