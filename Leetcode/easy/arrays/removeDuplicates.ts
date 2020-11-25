@@ -58,7 +58,10 @@
  */
 
 const removeDuplicates = (nums: number[]): number => {
-  // edge cases NOTE: algo will still work without them
+  // edge cases
+  // NOTE: algo will still work without them but technically make it marginally faster
+  if (nums.length === 0) return 0;
+  if (nums.length === 1) return 1;
 
   // index 0 is always going to be unique so we can start comparing at 1
   let index = 1;
@@ -67,8 +70,12 @@ const removeDuplicates = (nums: number[]): number => {
   for (let i = 0; i < nums.length - 1; i++) {
     const elem = nums[i];
     const next = nums[i + 1];
+
+    // if elem and next aren't equal
     if (elem !== next) {
+      // put next in index position of nums
       nums[index] = next;
+      // increment index to place next unique elem
       index++;
     }
   }
