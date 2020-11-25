@@ -80,11 +80,16 @@
 const rotate = (nums, k) => {
   return nums.map((element, index) => {
     const rotatedIndex = (index + k + 1) % nums.length;
+    console.log("LOG ~ file: rotateArray.ts ~ line 83 ~ returnnums.map ", {
+      index,
+      rotatedIndex,
+      nums,
+    });
     return nums[rotatedIndex];
   });
 };
 
-const nums = [1, 2, 3, 4, 5, 6, 7];
+const rotateInput = [1, 2, 3, 4, 5, 6, 7];
 
-const rotateTest = rotate(nums, 3);
+const rotateTest = rotate(rotateInput, 3);
 console.log("LOG: test", rotateTest);

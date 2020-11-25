@@ -76,7 +76,7 @@
 // };
 
 /**
- * Solution 2: Hash Table
+ * Solution 3: Map
  * 196 ms	43.2 MB
  *
  * Runtime:
@@ -86,19 +86,50 @@
  * 43.2 MB, less than 26.09% of TypeScript online submissions for Contains Duplicate.
  */
 
+// const containsDuplicate = (nums) => {
+//   const map = new Map();
+
+//   for (let i = 0; i < nums.length; i++) {
+//     const element = nums[i];
+
+//     if (!map.has(element)) {
+//       map.set(element, { val: 1 });
+//     } else {
+//       map.get(element).val++;
+//     }
+
+//     if (map.get(element).val > 1) return true;
+//   }
+
+//   return false;
+// };
+
+// const inputArr = [1, 3];
+
+// const test = containsDuplicate(inputArr);
+// console.log("LOG: test", test);
+
+/**
+ * Solution 4: Sorting
+ *
+ */
+
 const containsDuplicate = (nums) => {
-  const map = new Map();
+  // sorted
+  const sorted = nums.sort((a, b) => a - b);
+  console.log(
+    "LOG ~ file: containsDuplicate.js ~ line 120 ~ containsDuplicate ~ sorted",
+    sorted
+  );
 
-  for (let i = 0; i < nums.length; i++) {
-    const element = nums[i];
+  // if(elem === next) false
+  for (let i = 0; i < sorted.length - 1; i++) {
+    const elem = sorted[i];
+    const next = sorted[i + 1];
 
-    if (!map.has(element)) {
-      map.set(element, { val: 1 });
-    } else {
-      map.get(element).val++;
+    if (elem === next) {
+      return true;
     }
-
-    if (map.get(element).val > 1) return true;
   }
 
   return false;

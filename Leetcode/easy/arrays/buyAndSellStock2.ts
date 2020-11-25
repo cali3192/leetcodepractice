@@ -6,6 +6,13 @@
  *
  */
 
+/**
+ * Runtime:
+ * 80 ms, faster than 95.86% of TypeScript online submissions for Best Time to Buy and Sell Stock II.
+ *
+ * Memory Usage:
+ * 40.7 MB, less than 75.17% of TypeScript online submissions for Best Time to Buy and Sell Stock II.
+ */
 const maxProfit = (prices: number[]): number => {
   // profit
   let profit = 0;
