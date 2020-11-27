@@ -33,6 +33,7 @@ const deleteNode = (node) => {
     return null;
   }
 
+  // assignments must be given to the LL properties, val and next
   node.val = node.next.val;
   node.next = node.next.next;
 };
