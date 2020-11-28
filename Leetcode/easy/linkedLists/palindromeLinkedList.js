@@ -20,6 +20,8 @@ const reverseList = (head) => {
   let prev = null;
   let temp = null;
 
+  let count = 0;
+
   while (node) {
     // save ref
     temp = node.next;
@@ -30,11 +32,39 @@ const reverseList = (head) => {
     // at this point, we updated temp - now update prev and node
     prev = node;
     node = temp;
+    count++;
   }
 
   // prev is now the head of the LL
+  // return { prev, count };
   return prev;
 };
+
+/**
+ *
+ * @param {*} head
+ * this solution causes a reference issue
+ */
+
+// const isPalindrome = (head) => {
+//   let dummy = head;
+//   let { prev: reversed, count } = reverseList(dummy);
+
+//   let halfWay = Math.floor(count / 2);
+
+//   while (halfWay > 0) {
+//     if (reversed.val !== head.val) {
+//       return false;
+//     }
+
+//     reversed = reversed.next;
+//     head = head.next;
+
+//     halfWay--;
+//   }
+
+//   return true;
+// };
 
 const isPalindrome = (head) => {
   // find the midpoint using fast and slow pointers
@@ -56,7 +86,6 @@ const isPalindrome = (head) => {
 
   // slow is at head of half
   slow = reversedHalf;
-
 
   while (fast && slow) {
     if (fast.val !== slow.val) {

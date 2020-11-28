@@ -19,31 +19,58 @@
 // };
 
 // using two pointers
-const twoNumberSum = (array, target) => {
-  // sort the arr
-  const sorted = array.sort((a, b) => a - b);
+// const twoNumberSum = (array, target) => {
+//   // sort the arr
+//   const sorted = array.sort((a, b) => a - b);
 
-  // set a left and right pointer
-  let left = 0;
-  let right = array.length - 1;
+//   // set a left and right pointer
+//   let left = 0;
+//   let right = array.length - 1;
 
-  while (left < right) {
-    const sum = array[left] + array[right];
-    if (sum === target) {
-      return [array[left], array[right]];
-    }
-    if (Math.max(sum, target) === target) {
-      left++;
+//   while (left < right) {
+//     const sum = array[left] + array[right];
+//     if (sum === target) {
+//       return [array[left], array[right]];
+//     }
+//     if (Math.max(sum, target) === target) {
+//       left++;
+//     } else {
+//       right--;
+//     }
+//   }
+//   return [];
+// };
+
+function twoNumberSum(array, targetSum) {
+  // Write your code here.
+
+  // less than 2 won't give a result
+  if (array.length < 2) return [];
+
+  const hash = {};
+
+  // loop through
+  for (let i = 0; i < array.length; i++) {
+    const elem = array[i];
+
+    // find the difference
+    const result = targetSum - elem;
+
+    // if hash has own propery, return the result and elem
+    if (hash.hasOwnProperty(elem)) {
+      return [result, elem];
     } else {
-      right--;
+      // store the result in the hash
+      hash[result] = elem;
     }
   }
+  // default is return an empty array
   return [];
-};
+}
 
 const actual = twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6], 10);
 
 const one = twoNumberSum([3, 2, 4], 6);
 
-console.log('actual', actual);
-console.log('one', one);
+console.log("actual", actual);
+console.log("one", one);

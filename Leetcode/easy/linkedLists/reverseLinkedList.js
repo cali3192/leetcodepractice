@@ -40,3 +40,20 @@ const reverseList = (head) => {
   // prev is now the head of the LL
   return prev;
 };
+
+const reverseList = (head) => {
+  let prev = null,
+    temp = null,
+    node = head;
+
+  while (!!node) {
+    temp = node.next;
+
+    node.next = prev;
+
+    prev = node;
+    node = temp;
+  }
+
+  return prev.next;
+};
