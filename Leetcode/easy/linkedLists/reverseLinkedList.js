@@ -26,7 +26,7 @@ const reverseList = (head) => {
   let temp = null;
 
   while (node) {
-    // save ref
+    // save ref to what comes after
     temp = node.next;
 
     // reverse pointer

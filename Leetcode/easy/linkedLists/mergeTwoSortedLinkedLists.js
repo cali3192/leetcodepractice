@@ -15,6 +15,7 @@ const mergeTwoLists = (l1, l2) => {
   // create dummy node to start 1 spot ahead of head
   let dummy = new ListNode(-1);
 
+  // place head
   const head = dummy;
 
   // while either exists
@@ -33,20 +34,20 @@ const mergeTwoLists = (l1, l2) => {
   return head.next;
 };
 
-const mergeTwoLists = (l1, l2) => {
-  let dummy = new ListNode(-1);
+// const mergeTwoLists = (l1, l2) => {
+//   let dummy = new ListNode(-1);
 
-  const head = dummy;
+//   const head = dummy;
 
-  while (!!l1 && !!l2) {
-    if (l1 && (!l2 || l1.val <= l2.val)) {
-      dummy.next = l1;
-      l1 = l1.next;
-    } else {
-      dummy.next = l2;
-      l2 = l2.next;
-    }
-  }
+//   while (!!l1 && !!l2) {
+//     if (l1 && (!l2 || l1.val <= l2.val)) {
+//       dummy.next = l1;
+//       l1 = l1.next;
+//     } else {
+//       dummy.next = l2;
+//       l2 = l2.next;
+//     }
+//   }
 
-  return head.next;
-};
+//   return head.next;
+// };
