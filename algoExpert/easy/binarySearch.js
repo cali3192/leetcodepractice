@@ -28,4 +28,4 @@ const binarySearchActual = binarySearch(array, target);
 const binarySearchExpected = 9;
 console.log(binarySearchActual);
 
-assertEquals(binarySearchActual);
+assertEquals(binarySearchActual, binarySearchExpected);
