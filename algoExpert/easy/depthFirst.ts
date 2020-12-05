@@ -4,6 +4,11 @@
  *   v - vertices or nodes
  *
  * proportional to the number of children on the available vertices
+ * 
+ * Space: O(v)
+ *   Storing an array of v space and adding frames to the call stack
+ *   Number of frames dependent on the depth of node, worst case O(v)
+ *      is if all nodes are on the same branch
  *
  */
 
@@ -30,7 +35,7 @@ class Node {
       child.depthFirstSearch(array);
     }
 
-    // YOU NEED TO RETURN SOMETHING
+    // YOU NEED TO RETURN SOMETHING IN THAT FIRST CALL
     return array;
   }
 }

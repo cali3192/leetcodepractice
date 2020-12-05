@@ -115,6 +115,8 @@ const singleNumber = (nums) => {
     }
     console.log({ element, set });
   });
+
+  // alternatively you can also return [...set][0]
   // return [...set][0];
 
   // your set should only have 1 value, the unique one

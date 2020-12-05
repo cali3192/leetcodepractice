@@ -28,5 +28,24 @@ class TreeNode {
 
 function isValidBST(root: TreeNode | null): boolean {
   //
-  return true;
+  const traverse = (
+    node: TreeNode,
+    lowerLimit: number,
+    upperLimit: number
+  ): boolean => {
+    if (!node) {
+      return true;
+    }
+
+    if (node.val <= lowerLimit || node.val >= upperLimit) {
+      return false;
+    }
+
+    return (
+      traverse(node.left, lowerLimit, node.val) &&
+      traverse(node.right, node.val, upperLimit)
+    );
+  };
+
+  return traverse(root, Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
 }

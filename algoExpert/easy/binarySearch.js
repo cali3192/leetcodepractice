@@ -1,3 +1,5 @@
+const assertEquals = require("../../AssertTest/test.js");
+
 function binarySearch(array, target) {
   // Write your code here.
   let left = 0,
@@ -20,8 +22,10 @@ function binarySearch(array, target) {
 }
 
 const array = [0, 1, 21, 33, 45, /* half */ 45, 61, 71, 72, 73];
-// const array = [1, 5, 12, 111];
 const target = 73;
 
-const result = binarySearch(array, target);
-console.log(result);
+const binarySearchActual = binarySearch(array, target);
+const binarySearchExpected = 9;
+console.log(binarySearchActual);
+
+assertEquals(binarySearchActual);

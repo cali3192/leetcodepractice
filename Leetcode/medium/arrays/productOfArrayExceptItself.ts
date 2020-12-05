@@ -25,6 +25,34 @@
 //   return result;
 // };
 
+/**
+ * Solution 1: Forward and Backward Pass
+ * 
+ * Ex. [1, 2, 3, 4]
+ * 
+ *  going forward, you want to save the info of all previous elements
+ *  in this case, the product of previous elements
+ *  at index 0, no previous info so we start at 1
+ *  
+ *  [1] product = 1
+ *  [1,1 <-] b.c  product = 1*1 = 1
+ *  [1,1,2 <-] b.c product =1*2 = 2
+ *  [1,1,2,6 <-] b.c product = 2*3 = 6
+ * 
+ * 
+ * now we go back, at the end of the array, we don't anything that happens 
+ * after so we're trying to get that data
+ * - we will be adding elems at the begining but still initialize product with 1
+ *  
+ *  [1] product = 1
+ *  [-> 4,1] product = 4 * 1
+ *  [-> 12,4,1] product = 4 * 3
+ *  [-> 24,12,4,1] product = 12 * 2
+ * 
+ *  Now when you combine the 2 arrays, you have your backwards and forwards information
+ * 
+ */
+
 // getting the result of the forward pass
 const forwardProduct = (nums: number[]): number[] => {
   const result = [];
