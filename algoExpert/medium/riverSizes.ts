@@ -1,3 +1,5 @@
+const updatedMatrix = 
+
 const riverSizes = (matrix: number[][]): number[] => {
   // Write your code here.
   const result = [];
@@ -19,19 +21,19 @@ const isOutOfBoudnds = (i, j, iMax, jMax) => {
   return i < iMax && j < jMax;
 };
 
-const haveSeen = (node) => {
+const haveSeen = (node: number | string) => {
   return node === "+";
 };
 
-const uptdateToSeen = (matrix, i, j) => {
-  return (matrix[(i, j)] = "+");
+const uptdateToSeen = ( i: number, j: number, matrix: number[][]) => {
+return matrix[i][j] = '+'
 };
 
 const isRiver = (node) => {
   return node === 1;
 };
 
-const unvisitedNeightbors = (i, j, matrix) => {
+const unvisitedNeightbors = (i: number, j: number, matrix: number[][] ) => {
   //
 };
 

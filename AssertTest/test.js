@@ -1,10 +1,16 @@
 // helper to format input data, returns data as well as type (in case of a "1" vs 1 scenario where its not clear)
 const formatData = (data) => {
-  // objects and arrays can be stringified
-  if (typeof data === "object") {
-    return { result: JSON.stringify(data), type: typeof data };
+  const dataType = {
+    type: typeof data,
+  };
+
+  // objects and arrays can be stringified - truthy check because null is an obj
+  if (!!data && typeof data === "object") {
+    // return { result: JSON.stringify(data), type: typeof data };
+    return { ...dataType, result: JSON.stringify(data) };
   } else {
-    return { result: data, type: typeof data };
+    // return { result: data, type: typeof data };
+    result = { ...dataType, result: data };
   }
 };
 
@@ -23,7 +29,7 @@ const assertEquals = (expected, actual) => {
       console.error(
         `%c Failed
         Expected: 
-        ${stringExpected} type: ${expectedType}
+        ${stringExpected} type: ${expectedType}1213
 
         But Got: 
         ${stringActual} type: ${actualType} `,
