@@ -29,7 +29,7 @@ function levelOrder(root: TreeNode | null): number[][] {
     const levelArray = [];
 
     // track initial queue length
-    const initialLength = queue.length
+    const initialLength = queue.length;
 
     // go through each level
     for (let i = 0; i < initialLength; i++) {
@@ -55,7 +55,7 @@ function levelOrder(root: TreeNode | null): number[][] {
   return result;
 }
 
-
+/*
 
 LOG:  { node: [3,9,20,null,null,15,7], queue: [], levelArray: [] } 
 
@@ -70,3 +70,5 @@ LOG:  { node: [15], queue: [ [7] ], levelArray: [ 20 ] }
 
 
 LOG:  { node: [7], queue: [], levelArray: [] } 
+
+*/

@@ -14,7 +14,7 @@
  * 40.7 MB, less than 75.17% of TypeScript online submissions for Best Time to Buy and Sell Stock II.
  */
 const maxProfit = (prices: number[]): number => {
-  // profit
+  // profit'
   let profit = 0;
 
   // edge cases
