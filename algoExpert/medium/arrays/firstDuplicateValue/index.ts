@@ -25,6 +25,7 @@
 //   // return [];
 // }
 
+// O(n) time, O(n) space
 export function firstDuplicateValue(array: number[]) {
   // Write your code here.
 
@@ -43,4 +44,29 @@ export function firstDuplicateValue(array: number[]) {
   return -1;
 
   // return [];
+}
+
+/**
+ * HINT: problem says values are from 1 - n, so we can leverage that by storing values in corresponding index
+ */
+
+// O(n) time, O(c) space
+export function firstDuplicateValue(array: number[]) {
+  // Write your code here.
+
+  // loop through elems
+  for (const val of array) {
+    // get abs value of elem for the index lookup
+    let newInd = Math.abs(val) - 1;
+    console.log({ val, newInd, array });
+
+    // if the elem at that index is negative, we've already seen it
+    if (array[newInd] < 0) return newInd + 1;
+
+    // else update the value to be its negative
+    array[newInd] *= -1;
+  }
+
+  // if we get to the end of the loop, no duplicates
+  return -1;
 }
