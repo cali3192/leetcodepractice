@@ -38,6 +38,7 @@ const getPerimeter = (
   colEnd: number,
   matrix: number[][]
 ) => {
+  // define our perimeter
   let perimeter = [];
 
   console.log({ rowStart, rowEnd, colStart, colEnd });
@@ -72,3 +73,4 @@ const getPerimeter = (
 
   return perimeter;
 };
+

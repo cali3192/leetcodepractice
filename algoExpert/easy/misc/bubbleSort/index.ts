@@ -20,8 +20,8 @@ export function bubbleSort(array: number[]) {
   return array;
 }
 
-const swap = (i: number, j: number, array: number[]) => {
-  const temp = array[j];
-  array[j] = array[i];
-  array[i] = temp;
-};
+// const swap = (i: number, j: number, array: number[]) => {
+//   const temp = array[j];
+//   array[j] = array[i];
+//   array[i] = temp;
+// };
