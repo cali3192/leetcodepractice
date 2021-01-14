@@ -17,26 +17,43 @@ export class BinaryTree {
 export function findSuccessor(tree: BinaryTree, node: BinaryTree) {
   // Write your code here.
   // if there is a right child, successor will be lefmost of right child
+  if (!!node.right) return getLeftmostChlid(node.right);
 
   // else (left side) get the right most parent
-
-  return node;
+  return getRightmostParent(node);
+  // return node;
 }
 
 // get leftmostchild
 const getLeftmostChlid = (node: BinaryTree) => {
   // set current node
+  let currentNode = node;
+
   // while there are left children
-  // update the current node to node.left
+  while (!!currentNode.left) {
+    // update the current node to node.left
+    currentNode = currentNode.left;
+  }
+
   // you will end at leftmost leaf and return that
+  return currentNode;
 };
 
 // get rightmostparent
 const getRightmostParent = (node: BinaryTree) => {
   // set current node
+  let currentNode = node;
+
   // while there is a parent and the parent node has a right chlid
-  // set current node to parent
+  while (
+    currentNode.parent !== null &&
+    currentNode.parent.right === currentNode
+  ) {
+    // set current node to parent
+    currentNode = currentNode.parent;
+  }
   // when at root, return
+  return currentNode.parent;
 };
 
 /**
