@@ -64,27 +64,23 @@ export function threeNumberSort(array: number[], order: number[]) {
   // place all order[0] at start of array and return the occurences of order[0]
   let firstEndIndex = forwardPass(array, order[0]);
 
+  // places all the last element in order in the back of the array
   backwardsPass(array, order[2], firstEndIndex);
-
-  console.log({ array });
 
   return array;
 }
 
 // simple find and swap function
 const forwardPass = (array: number[], target: number) => {
+  // initialize an anchor and runner
   let anchor = 0,
-    pointer = 1;
+    pointer = 0;
 
   // loop through
   while (pointer < array.length) {
     // if you find an element, swap
     if (array[pointer] === target) {
       swap(array, anchor, pointer);
-    }
-
-    // our anchor moves up only if its at a target
-    if (array[anchor] === target) {
       anchor++;
     }
 
@@ -98,15 +94,12 @@ const forwardPass = (array: number[], target: number) => {
 
 // same as forward pass but backwards
 const backwardsPass = (array: number[], target: number, lowerBound: number) => {
-  let pointer = array.length - 2,
+  let pointer = array.length - 1,
     anchor = array.length - 1;
 
   while (pointer >= lowerBound) {
     if (array[pointer] === target) {
       swap(array, anchor, pointer);
-    }
-
-    if (array[anchor] === target) {
       anchor--;
     }
 
@@ -116,4 +109,17 @@ const backwardsPass = (array: number[], target: number, lowerBound: number) => {
 
 const swap = (array: number[], anchor: number, runner: number) => {
   [array[anchor], array[runner]] = [array[runner], array[anchor]];
+};
+
+const solution = (arr) => {
+  // Type your solution here
+
+  let result;
+  const left = [];
+
+  const right = [];
+
+  if (arr.length <= 1) {
+    result = "";
+  }
 };
