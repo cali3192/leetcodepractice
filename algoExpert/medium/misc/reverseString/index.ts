@@ -10,21 +10,21 @@ export function reverseWordsInString(string: string) {
     // temp string
     const letter = string[i];
 
+    // if you find a space,
     if (letter === " ") {
-      // if you find a space, push temp string to array
+      // push temp start of array
       result.unshift(temp);
-      // clear temp
 
+      // clear temp
       temp = "";
     } else {
-      // console.log({temp})
+      // update temps
       temp += letter;
     }
   }
 
+  // adding the last temp to the array
   result.unshift(temp);
 
-  console.log({ result });
   return result.join(" ");
-  // return string;
 }
