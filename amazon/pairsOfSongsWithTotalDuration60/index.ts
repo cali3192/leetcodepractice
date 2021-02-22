@@ -108,19 +108,27 @@ Explanation: All three pairs have a total duration of 120, which is divisible by
 
 var numPairsDivisibleBy60 = function(time: number[]) {
 
+  // define a count and storage map
+  let count = 0, map = new Map();
 
-  let count = 0, map = new Map()
+  // loop through time array
+  for(let songTime of time) {
 
-  for(let songTime of time){
+    // get our mod
     const mod = songTime % 60
+
+    // get our possible
     const possible = mod === 0 ? 0 : 60 - mod
     
+    // if possible is in map, add that num to count or add 0
     count += map.get(possible) || 0
+
+    // if mod in map, set to 0 but always add 1s
     map.set(mod, (map.get(mod) || 0) + 1) 
     
-    console.log({songTime, mod, possible, count, map})
+
     
   }
 
   return count
-};
+}
