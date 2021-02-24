@@ -52,6 +52,7 @@ function prisonAfterNDays(cells: number[], N: number): number[] {
     N = N % 14;
   }
 
+  // declare our storage map
   const map = new Map();
 
   // set initial state

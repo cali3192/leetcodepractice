@@ -10,19 +10,25 @@ function reorderLogFiles(logs: string[]): string[] {
   const letterLogs = [];
   const digitLogs = [];
 
-  // sorting our letter and digit logs
+  // O(n) first loop to populate letter and digit logs
   for (const log of logs) {
-    const firstLog = log.split(" ")[1];
+    const firstLog = log.split(" ")[1]; // the "identifier" so we can ignore
+    console.log({ log, firstLog });
 
-    // if we don't get NaN, we have a digit
+    // check our first "non-identifier value"
+    // if we don't get NaN, we have a digit log
     if (!isNaN(parseInt(firstLog))) {
+      // 4. digit logs maintain order
       digitLogs.push(log);
     } else {
-      // 4. digit logs maintain order
+      // place in letter logs to be sorted later
       letterLogs.push(log);
     }
   }
 
+  console.log("\n\n", { letterLogs, digitLogs });
+
+  // O(nlogn) to sosrt our letter logs
   letterLogs.sort((a, b) => {
     const { key: akey, values: aValues } = getValues(a);
 
@@ -51,10 +57,16 @@ function reorderLogFiles(logs: string[]): string[] {
 }
 
 const getValues = (log: string) => {
-  const index = log.indexOf(" ");
-  let key = log.substring(0, index);
-  const values = log.substring(index, log.length);
+  console.log(`\n\nLOG: `, { log });
+  let splitLog = log.split(" ");
 
+  // the identifier
+  let key = splitLog[0];
+
+  const values = splitLog.splice(1).join(" ");
+  console.log({ values });
+
+  // the key is the identifier that can be used to "break a tie" for order
   return {
     key,
     values,

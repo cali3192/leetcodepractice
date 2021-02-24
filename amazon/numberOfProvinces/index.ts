@@ -2,27 +2,33 @@ var findCircleNum = function (m: number[][]) {
   let groups = 0;
 
   // looping through each elem in matrix
-  for (let row = 0; row < m.length; row++) {
-    for (let col = 0; col < m[row].length; col++) {
+  for (let i = 0; i < m.length; i++) {
+    for (let j = 0; j < m[i].length; j++) {
       // if we find a city, increment group
-      if (m[row][col] === 1) {
+      if (m[i][j] === 1) {
         groups++;
-        //
-        traverse(m, row, col);
+
+        // DFS
+        traverse(m, i, j);
       }
     }
   }
   return groups;
 };
 
-function traverse(m: number[][], r: number, c: number) {
-  if (m[r][c] !== 1) return;
-  m[r][c] = 0;
+function traverse(matrix: number[][], i: number, j: number) {
+  if (matrix[i][j] !== 1) return;
 
-  let row = c;
-  for (let col = 0; col < m[row].length; col++) {
-    if (m[row][col] === 1) {
-      traverse(m, row, col);
+  // update to 0 bc to mark as "seen"
+  matrix[i][j] = 0;
+
+  let row = j;
+
+  console.log(matrix[row]);
+
+  for (let col = 0; col < matrix[row].length; col++) {
+    if (matrix[row][col] === 1) {
+      traverse(matrix, row, col);
     }
   }
 }

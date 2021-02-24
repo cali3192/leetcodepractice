@@ -45,7 +45,7 @@ var isRobotBounded = function (instructions: string) {
 
   console.log({ direction, position });
 
-  return direction === "Up";
+  return direction === "Up" || (position[0] === 0 && position[1]);
 };
 
 const updateDirection = (direction: string, instruction: string): Move => {
