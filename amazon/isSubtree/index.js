@@ -14,9 +14,12 @@
 
 var isSubtree = function (s, t) {
   if (!s) return false;
+
+  // look through the left and right 
   return isEqual(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
 };
 
+// checks for equality between the trees
 function isEqual(root1, root2) {
   if (!root1 || !root2) return !root1 && !root2;
   if (root1.val !== root2.val) return false;

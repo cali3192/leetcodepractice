@@ -34,7 +34,7 @@ function reorderLogFiles(logs: string[]): string[] {
 
     const { key: bkey, values: bValues } = getValues(b);
 
-    // 2. sort on lexical "values" based on contents
+    // 2. sort on lexical "values" based on contents first
     if (aValues < bValues) {
       return -1;
     } else if (aValues > bValues) {
@@ -63,6 +63,7 @@ const getValues = (log: string) => {
   // the identifier
   let key = splitLog[0];
 
+  // rest of the values
   const values = splitLog.splice(1).join(" ");
   console.log({ values });
 
