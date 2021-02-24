@@ -61,14 +61,14 @@ LRUCache.prototype.put = function (key, value) {
     return;
   }
 
-  // check if we're in capacity
+  // adding logic if at capacity 
   if (this.keysInStore === this._capacity) {
     // get our least recently used value
     let oldestKey;
 
     // loop through map
     for (const [key, value] of this.map) {
-      // getting first key in map
+      // getting first key in map aka oldest key
       oldestKey = key;
 
       // once we find oldest, stop loop

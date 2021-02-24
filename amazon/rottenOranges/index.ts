@@ -68,6 +68,6 @@ var orangesRotting = function (grid: number[][]) {
     queue = next;
   }
 
-  // return
+  // if we still have fresh oranges, -1 else return time
   return !!fresh ? -1 : minute;
 };
