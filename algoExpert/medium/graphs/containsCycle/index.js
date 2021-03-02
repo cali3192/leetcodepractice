@@ -61,8 +61,6 @@ function cycleInGraph(edges) {
   let totalNodes = edges.length,
     visited = new Map(),
     inStack = new Map();
-  //   visited = new Array(totalNodes).fill(false);
-  // inStack = new Array(totalNodes).fill(false);
 
   for (let node = 0; node < totalNodes; node++) {
     if (visited.has(node)) continue;
@@ -77,9 +75,6 @@ function cycleInGraph(edges) {
 }
 
 const dfsNodeCycle = (node, edges, visited, inStack) => {
-  console.log(`inside DFSNodeCycle`, { node });
-  // visited[node] = true;
-  // inStack[node] = true;
   visited.set(node, true);
   inStack.set(node, true);
 
@@ -89,24 +84,21 @@ const dfsNodeCycle = (node, edges, visited, inStack) => {
   for (neighbor of neighbors) {
     // if you have not visited this node,
     if (!visited.has(neighbor)) {
-      // if (!visited[neighbor]) {
       // recurse
       const containsCycle = dfsNodeCycle(neighbor, edges, visited, inStack);
 
       if (containsCycle) return true;
 
-      // if node is currently in stack (backedge)
+      // if neighbord in stack
     } else if (inStack.get(neighbor)) {
-      // } else if (inStack[neighbor]) {
+      // return true
       return true;
     }
   }
 
   // update if node is inStack
   inStack.set(node, false);
-  // inStack[node] = false;
 
-  // return false
   return false;
 };
 

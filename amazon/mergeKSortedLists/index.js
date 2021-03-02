@@ -10,7 +10,7 @@
  * @return {ListNode}
  */
 
-// time: On * log(k) -> log from recursion with k being the recursive calls
+
 var mergeKLists = function (lists) {
   const nodes = [];
 
@@ -37,6 +37,7 @@ var mergeKLists = function (lists) {
 };
 
 // divide and conquer
+// time: On * log(k) -> log from recursion with k being the recursive calls
 var mergeKLists = function (lists) {
   if (lists === null || lists.length === 0) return null;
 

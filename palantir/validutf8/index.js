@@ -89,7 +89,7 @@ const validUtf8 = (data) => {
   let numOfBytes = 0;
 
   for (let bitInt of dec2binInts) {
-    if (numOfBytes >= 0) {
+    if (numOfBytes <= 0) {
       // getting the initial numOfBytes
       numOfBytes = bitInt.indexOf("0") - 1;
 
