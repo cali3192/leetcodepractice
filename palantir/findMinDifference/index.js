@@ -10,6 +10,7 @@ var findMinDifference = function (timePoints) {
 
   // loop through time points
   for (let i = 0; i < timePoints.length; i++) {
+    // get current timePoint
     const timePoint = timePoints[i];
 
     // call helper that gets time in minutes
@@ -32,6 +33,7 @@ var findMinDifference = function (timePoints) {
       i === 0
         ? timePointsMinutes[timePointsMinutes.length - 1][0]
         : timePointsMinutes[i - 1][0];
+        
     const currTime = timePointsMinutes[i][0];
 
     // we want to compare clockwise in time and counterclockwise
