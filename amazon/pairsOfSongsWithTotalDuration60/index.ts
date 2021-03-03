@@ -105,7 +105,7 @@ Explanation: All three pairs have a total duration of 120, which is divisible by
 
   */
 
-var numPairsDivisibleBy60 = function (time) {
+var numPairsDivisibleBy60 = function (time: number[]) {
   // define a count and storage map
   let count = 0,
     map = new Map();
