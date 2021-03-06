@@ -33,10 +33,11 @@ function partitionLabels(S) {
     console.log({ index, letter, currentMax, leftPointer });
 
     // if max less than the last index of interested letter
-    if (currentMax < charMap[letter]) {
-      // upddate that position to be our current max
-      currentMax = charMap[letter];
-    }
+    // if (currentMax < charMap[letter]) {
+    //   // upddate that position to be our current max
+    //   currentMax = charMap[letter];
+    // }
+    currentMax = Math.max(currentMax, charMap[letter]);
 
     // once we reach that current max
     if (currentMax === index) {

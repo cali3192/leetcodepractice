@@ -105,5 +105,5 @@ var isRobotBounded = function (instructions) {
       // direction = (4 + direction - 1) % 4;
     }
   }
-  return x == 0 && y == 0;
+  return x === 0 && y === 0;
 };
