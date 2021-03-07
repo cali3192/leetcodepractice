@@ -66,7 +66,6 @@ function cycleInGraph(edges) {
     if (visited.has(node)) continue;
 
     // if (visited[node]) continue;
-
     const containsCycle = dfsNodeCycle(node, edges, visited, inStack);
 
     if (containsCycle) return true;
