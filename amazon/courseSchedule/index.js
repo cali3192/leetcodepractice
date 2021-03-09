@@ -104,7 +104,7 @@ var canFinish = function (numCourses, prerequisites) {
 
   // loop through courses
   for (let course of courses) {
-    // if the res of recurse call is true and we have cycle
+    // presense of cycle means courses can not be completed
     if (hasCycle(course)) {
       // we can not complete our courses
       return false;
@@ -117,20 +117,20 @@ var canFinish = function (numCourses, prerequisites) {
 
 // dfs
 const hasCycle = (course) => {
-  // updated our visited and visiting properties
+  // updated course visited and visiting properties
   course.visited = true;
   course.isVisiting = true;
 
   // loop thorugh preReqs array of each course
   for (const preReq of course.preReqs) {
-    // if we have no visited preReq
+    // if preReq has been visited
     if (!preReq.visited) {
       // check to see if prereq has cycle
       if (hasCycle(preReq)) {
         return true;
       }
 
-      // if we're currently visiting node, found have a cycle
+      // if preReq is being visited, there is a cycle
     } else if (preReq.isVisiting) {
       return true;
     }
