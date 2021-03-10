@@ -91,10 +91,11 @@ var isRobotBounded = function (instructions) {
 
   for (let ins of instructions.repeat(4)) {
     let [dx, dy] = moves[direction];
-    console.log({ direction, dx, dy, x, y });
+    // console.log({ direction, dx, dy, x, y })
     if (ins == "G") {
       [x, y] = [x + dx, y + dy];
     }
+
     if (ins == "L") {
       // direction = (4 + direction + 1) % 4;
       direction = moves[direction][2];
@@ -105,5 +106,6 @@ var isRobotBounded = function (instructions) {
       // direction = (4 + direction - 1) % 4;
     }
   }
+
   return x === 0 && y === 0;
 };

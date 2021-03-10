@@ -148,3 +148,57 @@ const isSquare = (i, j, matrix) => {
   j++;
   return true;
 };
+
+// Top-Down Approach
+// Recursion and memoization
+var maximalSquare = function (matrix) {
+  // check to see if matrix exists
+  if (matrix.length == 0 || matrix[0].length == 0) return 0;
+
+  // define height and width
+  let height = matrix.length,
+    width = matrix[0].length;
+
+  // construct storage matrix
+  const memo = new Array(height).fill(0).map(() => new Array(width).fill(0));
+
+  // initialize max
+  let max = 0;
+
+  // loop through matrix
+  for (let row = 0; row < height; row++) {
+    for (let col = 0; col < width; col++) {
+      // if found 1
+      if (matrix[row][col] == 1) {
+        // get the square length from recursive function
+        let len = getMaxSquareLength(row, col, memo, matrix);
+        // update max based on curr max or len squared
+        max = Math.max(max, len ** 2);
+      }
+    }
+  }
+
+  // return max
+  return max;
+  // Time Complexity: O(m * n), we visit every cell twice at most (when the matrix itself is one big square)
+  // Space Complexity: O(m * n), for memoization table
+};
+
+function getMaxSquareLength(row, col, memo, matrix) {
+  // check bounds or if elem is 0
+  if (!inBounds(row, col, matrix) || matrix[row][col] == 0) return 0;
+  if (memo[row][col]) return memo[row][col];
+
+  memo[row][col] =
+    Math.min(
+      getMaxSquareLength(row, col + 1, memo, matrix),
+      getMaxSquareLength(row + 1, col, memo, matrix),
+      getMaxSquareLength(row + 1, col + 1, memo, matrix)
+    ) + 1;
+
+  return memo[row][col];
+}
+
+const inBounds = (row, col, matrix) => {
+  return row >= 0 && row < matrix.length && col >= 0 && col < matrix[0].length;
+};

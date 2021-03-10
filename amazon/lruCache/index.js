@@ -15,14 +15,14 @@ var LRUCache = function (capacity) {
 
 // helper method tracking most recently used and placing at end of map
 LRUCache.prototype.markRecentlyUsed = function (key) {
-  // getting the value in map
-  const prevValue = this.map.get(key);
+  // getting the value in map that we will call last val
+  const lastValue = this.map.get(key);
 
   // remove that value from map
   this.map.delete(key);
 
   // reset to be most recent - leveraging map ability to retain insertion order
-  this.map.set(key, prevValue);
+  this.map.set(key, lastValue);
 };
 
 /**
@@ -61,7 +61,7 @@ LRUCache.prototype.put = function (key, value) {
     return;
   }
 
-  // adding logic if at capacity 
+  // adding logic if at capacity
   if (this.keysInStore === this._capacity) {
     // get our least recently used value
     let oldestKey;

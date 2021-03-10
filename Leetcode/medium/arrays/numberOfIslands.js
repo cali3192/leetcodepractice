@@ -25,19 +25,15 @@ var numIslands = function (grid) {
   return numOfIslands;
 };
 
+// update the spot as visited and traverse in all directions
+
 // DFS helper method
 var search = function (grid, row, col, moves) {
   // if out of bounds - return
-  if (!inBounds(grid, row, col)) {
+  if (!inBounds(grid, row, col) || grid[row][col] !== "1") {
     return;
   }
 
-  // if on water (0) or we've already visted this spot (+) - return
-  if (grid[row][col] === "0" || grid[row][col] === "+") {
-    return;
-  }
-
-  // update the spot as visited and traverse in all directions
   grid[row][col] = "+";
 
   // go through each move
