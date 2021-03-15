@@ -32,6 +32,15 @@ Output: [0]
  * @param {number} numCourses
  * @param {number[][]} prerequisites
  * @return {number[]}
+ *
+ * Time Complexity:
+ * O(v + e)
+ * v: vertices
+ * e: edges
+ *
+ * Space Complexity:
+ * O(v)
+ *
  */
 
 class CourseNode {
@@ -43,7 +52,7 @@ class CourseNode {
   }
 }
 
-// constructor our graph
+// constructor our graph : 2(ON)
 const constructGraph = (numCourses, prerequisites) => {
   // store our graph data
   const graph = [];
@@ -73,27 +82,30 @@ const constructGraph = (numCourses, prerequisites) => {
 
 var findOrder = function (numCourses, prerequisites) {
   // create storage array
-  const schedule = [];
+  // const schedule = []
+  const schedule = new Set();
 
   // construct our courses graoh
   const courses = constructGraph(numCourses, prerequisites);
 
-  // loop through courses
+  // loop through courses: O(N)
   for (let course of courses) {
-    // if there is a cycle present
+    // if there is a cycle present : O(v + e)
     if (hasCycle(course, schedule)) {
       // can not complete courses
       return [];
     }
   }
 
+  return [...schedule];
+
   // if no cycle, get all unique courses in array
-  const set = new Set(schedule);
+  // const set = new Set(schedule);
 
   // convert set to array and return
-  const arrayschedule = Array.from(set);
+  // const arrayschedule = Array.from(set);
 
-  return arrayschedule;
+  // return arrayschedule;
 };
 
 // DFS: check for cycles - returning true or false
@@ -118,7 +130,8 @@ const hasCycle = (course, schedule) => {
   }
 
   // if no cycle detected, add courseId to the schedule
-  schedule.push(course.course);
+  // schedule.push(course.course);
+  schedule.add(course.course);
 
   // updated the isVisiting property
   course.isVisiting = false;
